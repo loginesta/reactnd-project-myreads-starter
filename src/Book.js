@@ -1,32 +1,28 @@
 import React from "react";
+import BookshelfChanger from "./BookshelfChanger";
 
 const Book = props => {
-  const { author, title, cover } = props;
+  const { authors, title, imageLinks } = props;
   return (
     <div className="book">
       <div className="book-top">
         <div
           className="book-cover"
           style={{
-            width: `${cover.width}`,
-            height: `${cover.height}`,
-            backgroundImage: `url(${cover.backgroundImage})`,
+            backgroundImage: `url(${imageLinks.thumbnail})`,
+            display: "block",
+            height: 180,
+            width: 120,
           }}
         />
-        <div className="book-shelf-changer">
-          <select>
-            <option value="move" disabled>
-              Move to...
-            </option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
-          </select>
-        </div>
+        <BookshelfChanger />
       </div>
       <div className="book-title">{title}</div>
-      <div className="book-authors">{author}</div>
+      <div className="book-authors">
+        {authors.map(author => (
+          <div>{author}</div>
+        ))}
+      </div>
     </div>
   );
 };
