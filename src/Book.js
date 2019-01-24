@@ -10,9 +10,10 @@ const Book = props => {
           className="book-cover"
           style={{
             backgroundImage: `url(${imageLinks.thumbnail})`,
+            backgroundSize: "cover",
             display: "block",
-            height: 180,
-            width: 120,
+            height: "100%",
+            width: "100%",
           }}
         />
         <BookshelfChanger />
