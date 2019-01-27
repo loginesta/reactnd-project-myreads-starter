@@ -3,24 +3,6 @@ import * as BooksAPI from "./utils/BooksAPI";
 import "./App.css";
 import Bookshelf from "./Bookshelf";
 
-const someBookshelves = [
-  {
-    id: "currentlyReading",
-    title: "Currently Reading",
-    books: [],
-  },
-  {
-    id: "wantToRead",
-    title: "Want To Read",
-    books: [],
-  },
-  {
-    id: "read",
-    title: "Read",
-    books: [],
-  },
-];
-
 class BooksApp extends React.Component {
   state = {
     /**

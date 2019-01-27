@@ -1,22 +1,5 @@
 import React from "react";
-
-const bookshelves = [
-  {
-    id: "currentlyReading",
-    title: "Currently Reading",
-    books: [],
-  },
-  {
-    id: "wantToRead",
-    title: "Want To Read",
-    books: [],
-  },
-  {
-    id: "read",
-    title: "Read",
-    books: [],
-  },
-];
+import { bookshelves } from "./utils/bookshelves";
 
 const BookshelfChanger = props => {
   const { current } = props;
