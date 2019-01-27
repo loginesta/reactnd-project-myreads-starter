@@ -2,7 +2,7 @@ import React from "react";
 import BookshelfChanger from "./BookshelfChanger";
 
 const Book = props => {
-  const { authors, title, imageLinks } = props;
+  const { authors, title, imageLinks, bookshelf } = props;
   return (
     <div className="book">
       <div className="book-top">
@@ -16,7 +16,7 @@ const Book = props => {
             width: "100%",
           }}
         />
-        <BookshelfChanger />
+        <BookshelfChanger current={bookshelf} />
       </div>
       <div className="book-title">{title}</div>
       <div className="book-authors">
