@@ -9,7 +9,7 @@ const BookshelfChanger = props => {
         defaultValue={current}
         onChange={event => onChangeBookshelf(book, event.target.value)}
       >
-        <option value="move" disabled>
+        <option key="move" value="move" disabled>
           Move to...
         </option>
         {bookshelves.map(bookshelf => (
@@ -17,7 +17,9 @@ const BookshelfChanger = props => {
             {bookshelf.title}
           </option>
         ))}
-        <option value="none">None</option>
+        <option key="none" value="none">
+          None
+        </option>
       </select>
     </div>
   );
