@@ -12,28 +12,33 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
-    bookshelves: {
-      currentlyReading: [],
-      wantToRead: [],
-      read: [],
-    },
+    books: [],
   };
 
   componentDidMount() {
+    this.getAllBooks();
+  }
+
+  getAllBooks() {
     BooksAPI.getAll().then(books => {
       this.setState(() => ({
-        bookshelves: {
-          currentlyReading: books.filter(
-            book => book.shelf === "currentlyReading",
-          ),
-          wantToRead: books.filter(book => book.shelf === "wantToRead"),
-          read: books.filter(book => book.shelf === "read"),
-        },
+        books: books,
       }));
     });
   }
 
+  handleChangeBookshelf(book, shelf) {
+    BooksAPI.update(book, shelf).then(this.getAllBooks());
+  }
+
   render() {
+    const { books } = this.state;
+    const currentlyReading = books.filter(
+      book => book.shelf === "currentlyReading",
+    );
+    const wantToRead = books.filter(book => book.shelf === "wantToRead");
+    const read = books.filter(book => book.shelf === "read");
+
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -71,17 +76,20 @@ class BooksApp extends React.Component {
                 <Bookshelf
                   id="currentlyReading"
                   title="Currently Reading"
-                  books={this.state.bookshelves.currentlyReading}
+                  books={currentlyReading}
+                  onChangeBookshelf={this.handleChangeBookshelf}
                 />
                 <Bookshelf
                   id="wantToRead"
                   title="Want To Read"
-                  books={this.state.bookshelves.wantToRead}
+                  books={wantToRead}
+                  onChangeBookshelf={this.handleChangeBookshelf}
                 />
                 <Bookshelf
                   id="read"
                   title="Read"
-                  books={this.state.bookshelves.read}
+                  books={read}
+                  onChangeBookshelf={this.handleChangeBookshelf}
                 />
               </div>
             </div>

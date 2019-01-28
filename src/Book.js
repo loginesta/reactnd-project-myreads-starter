@@ -1,23 +1,11 @@
 import React from "react";
 import BookshelfChanger from "./BookshelfChanger";
-import * as BooksAPI from "./utils/BooksAPI";
 
 class Book extends React.Component {
-  state = {
-    bookshelf: this.props.bookshelf,
-  };
-
-  handleChange(book, shelf) {
-    BooksAPI.update(book, shelf).then(
-      this.setState(() => ({
-        bookshelf: shelf,
-      })),
-    );
-  }
-
   render() {
-    const { book, bookshelf } = this.props;
+    const { book, bookshelf, onChangeBookshelf } = this.props;
     const { authors, title, imageLinks } = book;
+
     return (
       <div className="book">
         <div className="book-top">
@@ -34,7 +22,7 @@ class Book extends React.Component {
           <BookshelfChanger
             book={book}
             current={bookshelf}
-            onChangeBookshelf={this.handleChange}
+            onChangeBookshelf={onChangeBookshelf}
           />
         </div>
         <div className="book-title">{title}</div>
