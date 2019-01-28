@@ -2,24 +2,22 @@ import React from "react";
 import { bookshelves } from "./utils/bookshelves";
 
 const BookshelfChanger = props => {
-  const { current } = props;
+  const { book, current, onChangeBookshelf } = props;
   return (
     <div className="book-shelf-changer">
-      <select>
+      <select
+        defaultValue={current}
+        onChange={event => onChangeBookshelf(book, event.target.value)}
+      >
         <option value="move" disabled>
           Move to...
         </option>
         {bookshelves.map(bookshelf => (
-          <option
-            value={bookshelf.id}
-            selected={current === bookshelf.id ? "selected" : ""}
-          >
+          <option key={bookshelf.id} value={bookshelf.id}>
             {bookshelf.title}
           </option>
         ))}
-        <option value="none" selected={current === "" ? "selected" : ""}>
-          None
-        </option>
+        <option value="none">None</option>
       </select>
     </div>
   );
