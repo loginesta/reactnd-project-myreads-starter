@@ -10,6 +10,9 @@ class MyReads extends React.Component {
 
   render() {
     const { books, handleChangeBookshelf } = this.props;
+    const bookshelvesToShow = bookshelves.filter(
+      bookshelf => bookshelf.visible,
+    );
 
     return (
       <div className="list-books">
@@ -18,7 +21,7 @@ class MyReads extends React.Component {
         </div>
         <div className="list-books-content">
           <div>
-            {bookshelves.map(bookshelf => (
+            {bookshelvesToShow.map(bookshelf => (
               <Bookshelf
                 key={bookshelf.id}
                 id={bookshelf.id}
