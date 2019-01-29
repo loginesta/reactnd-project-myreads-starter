@@ -1,6 +1,7 @@
 import React from "react";
 import Bookshelf from "./Bookshelf";
 import { Link } from "react-router-dom";
+import { bookshelves } from "./utils/bookshelves";
 
 class MyReads extends React.Component {
   filterBooks(books, bookshelf) {
@@ -17,24 +18,15 @@ class MyReads extends React.Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Bookshelf
-              id="currentlyReading"
-              title="Currently Reading"
-              books={this.filterBooks(books, "currentlyReading")}
-              onChangeBookshelf={handleChangeBookshelf}
-            />
-            <Bookshelf
-              id="wantToRead"
-              title="Want To Read"
-              books={this.filterBooks(books, "wantToRead")}
-              onChangeBookshelf={handleChangeBookshelf}
-            />
-            <Bookshelf
-              id="read"
-              title="Read"
-              books={this.filterBooks(books, "read")}
-              onChangeBookshelf={handleChangeBookshelf}
-            />
+            {bookshelves.map(bookshelf => (
+              <Bookshelf
+                key={bookshelf.id}
+                id={bookshelf.id}
+                title={bookshelf.title}
+                books={this.filterBooks(books, bookshelf.id)}
+                onChangeBookshelf={handleChangeBookshelf}
+              />
+            ))}
           </div>
         </div>
         <div className="open-search">
