@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as BooksAPI from "./utils/BooksAPI";
+import Booklist from "./Booklist";
 
 class SearchBooks extends React.Component {
   state = {
     query: "",
-    books: [],
-    currentBooks: this.props.currentBooks,
+    searchBooks: [],
+    books: this.props.books,
   };
 
   updateQuery = query => {
@@ -17,12 +18,12 @@ class SearchBooks extends React.Component {
     if (query !== "") {
       BooksAPI.search(query.toLowerCase()).then(books => {
         this.setState({
-          books: books,
+          searchBooks: books,
         });
       });
     } else {
       this.setState({
-        books: [],
+        searchBooks: [],
       });
     }
   };
@@ -56,7 +57,10 @@ class SearchBooks extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid" />
+          <Booklist
+            books={this.state.searchBooks}
+            onChangeBookshelf={this.props.onChangeBookshelf}
+          />
         </div>
       </div>
     );

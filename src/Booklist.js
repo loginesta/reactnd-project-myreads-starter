@@ -3,14 +3,14 @@ import Book from "./Book";
 
 class Booklist extends React.Component {
   render() {
-    const { books, bookshelf, onChangeBookshelf } = this.props;
+    const { books, onChangeBookshelf } = this.props;
     return (
       <ol className="books-grid">
         {books.map(book => (
           <li key={book.id}>
             <Book
               book={book}
-              bookshelf={bookshelf}
+              bookshelf={book.shelf ? book.shelf : "none"}
               onChangeBookshelf={onChangeBookshelf}
             />
           </li>

@@ -52,7 +52,7 @@ class BooksApp extends React.Component {
           path="/search"
           render={({ history }) => (
             <SearchBooks
-              currentBooks={this.state.books}
+              books={this.state.books}
               handleChangeBookshelf={this.handleChangeBookshelf}
             />
           )}

@@ -24,7 +24,6 @@ class MyReads extends React.Component {
             {bookshelvesToShow.map(bookshelf => (
               <Bookshelf
                 key={bookshelf.id}
-                id={bookshelf.id}
                 title={bookshelf.title}
                 books={this.filterBooks(books, bookshelf.id)}
                 onChangeBookshelf={handleChangeBookshelf}
