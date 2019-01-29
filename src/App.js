@@ -36,13 +36,6 @@ class BooksApp extends React.Component {
   };
 
   render() {
-    const { books } = this.state;
-    const currentlyReading = books.filter(
-      book => book.shelf === "currentlyReading",
-    );
-    const wantToRead = books.filter(book => book.shelf === "wantToRead");
-    const read = books.filter(book => book.shelf === "read");
-
     return (
       <div className="app">
         <Route
@@ -50,9 +43,7 @@ class BooksApp extends React.Component {
           path="/"
           render={() => (
             <MyReads
-              currentlyReading={currentlyReading}
-              wantToRead={wantToRead}
-              read={read}
+              books={this.state.books}
               handleChangeBookshelf={this.handleChangeBookshelf}
             />
           )}

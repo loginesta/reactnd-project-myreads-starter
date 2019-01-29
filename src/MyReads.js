@@ -3,6 +3,14 @@ import Bookshelf from "./Bookshelf";
 import { Link } from "react-router-dom";
 
 const MyReads = props => {
+  const { books, handleChangeBookshelf } = props;
+
+  const currentlyReading = books.filter(
+    book => book.shelf === "currentlyReading",
+  );
+  const wantToRead = books.filter(book => book.shelf === "wantToRead");
+  const read = books.filter(book => book.shelf === "read");
+
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -13,20 +21,20 @@ const MyReads = props => {
           <Bookshelf
             id="currentlyReading"
             title="Currently Reading"
-            books={props.currentlyReading}
-            onChangeBookshelf={props.handleChangeBookshelf}
+            books={currentlyReading}
+            onChangeBookshelf={handleChangeBookshelf}
           />
           <Bookshelf
             id="wantToRead"
             title="Want To Read"
-            books={props.wantToRead}
-            onChangeBookshelf={props.handleChangeBookshelf}
+            books={wantToRead}
+            onChangeBookshelf={handleChangeBookshelf}
           />
           <Bookshelf
             id="read"
             title="Read"
-            books={props.read}
-            onChangeBookshelf={props.handleChangeBookshelf}
+            books={read}
+            onChangeBookshelf={handleChangeBookshelf}
           />
         </div>
       </div>
