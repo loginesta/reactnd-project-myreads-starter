@@ -16,10 +16,20 @@ class SearchBooks extends React.Component {
     }));
 
     if (query !== "") {
-      BooksAPI.search(query.toLowerCase()).then(books => {
-        this.setState({
-          searchBooks: books,
-        });
+      BooksAPI.search(query.toLowerCase()).then(matchingBooks => {
+        if (matchingBooks.error) {
+          /* no books matching search criteria */
+          this.setState({
+            searchBooks: [],
+          });
+        } else {
+          this.setState({
+            searchBooks: matchingBooks,
+          });
+        }
+        /* WIP */
+        /* for all matching books, check if book in myReads */
+        /* If in my reads - remove current, add the one in my reads */
       });
     } else {
       this.setState({
