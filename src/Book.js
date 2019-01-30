@@ -1,5 +1,6 @@
 import React from "react";
 import BookshelfChanger from "./BookshelfChanger";
+import BookCover from "./BookCover";
 
 class Book extends React.Component {
   render() {
@@ -9,16 +10,7 @@ class Book extends React.Component {
     return (
       <div className="book">
         <div className="book-top">
-          <div
-            className="book-cover"
-            style={{
-              backgroundImage: `url(${imageLinks.thumbnail})`,
-              backgroundSize: "cover",
-              display: "block",
-              height: "100%",
-              width: "100%",
-            }}
-          />
+          <BookCover imageLinks={imageLinks} />
           <BookshelfChanger
             book={book}
             current={bookshelf}
