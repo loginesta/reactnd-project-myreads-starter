@@ -49,10 +49,6 @@ class SearchBooks extends React.Component {
     }
   };
 
-  clearQuery = () => {
-    this.updateQuery("");
-  };
-
   render() {
     return (
       <div className="search-books">
@@ -76,7 +72,7 @@ class SearchBooks extends React.Component {
               onChangeBookshelf={this.props.handleChangeBookshelf}
             />
           )}
-          {this.state.error && <p>No books matching search criteria</p>}
+          {this.state.error && <h4>No books matching search criteria</h4>}
         </div>
       </div>
     );
