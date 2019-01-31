@@ -1,6 +1,7 @@
 import React from "react";
-import BookshelfChanger from "./BookshelfChanger";
 import BookCover from "./BookCover";
+import BookshelfChanger from "./BookshelfChanger";
+import PropTypes from "prop-types";
 
 class Book extends React.Component {
   render() {
@@ -26,5 +27,11 @@ class Book extends React.Component {
     );
   }
 }
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  bookshelf: PropTypes.string.isRequired,
+  onChangeBookshelf: PropTypes.func.isRequired,
+};
 
 export default Book;

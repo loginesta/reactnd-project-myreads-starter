@@ -1,5 +1,6 @@
 import React from "react";
 import Booklist from "./Booklist";
+import PropTypes from "prop-types";
 
 const Bookshelf = props => {
   const { title, books, onChangeBookshelf } = props;
@@ -12,6 +13,12 @@ const Bookshelf = props => {
       </div>
     </div>
   );
+};
+
+Bookshelf.propTypes = {
+  title: PropTypes.string.isRequired,
+  books: PropTypes.array.isRequired,
+  onChangeBookshelf: PropTypes.func.isRequired,
 };
 
 export default Bookshelf;

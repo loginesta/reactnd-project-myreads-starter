@@ -1,5 +1,6 @@
 import React from "react";
 import Bookshelf from "./Bookshelf";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { bookshelves } from "./utils/bookshelves";
 
@@ -40,5 +41,10 @@ class MyReads extends React.Component {
     );
   }
 }
+
+MyReads.propTypes = {
+  books: PropTypes.array.isRequired,
+  handleChangeBookshelf: PropTypes.func.isRequired,
+};
 
 export default MyReads;

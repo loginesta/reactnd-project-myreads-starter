@@ -1,5 +1,6 @@
 import React from "react";
 import defaultImage from "./img/default-book-cover.png";
+import PropTypes from "prop-types";
 
 const BookCover = props => {
   const { imageLinks } = props;
@@ -20,6 +21,10 @@ const BookCover = props => {
       }}
     />
   );
+};
+
+BookCover.propTypes = {
+  imageLinks: PropTypes.object.isRequired,
 };
 
 export default BookCover;
