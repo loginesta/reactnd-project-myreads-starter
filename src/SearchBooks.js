@@ -8,7 +8,6 @@ class SearchBooks extends React.Component {
     query: "",
     error: false,
     searchBooks: [],
-    books: this.props.books,
   };
 
   updateQuery = query => {
@@ -17,18 +16,26 @@ class SearchBooks extends React.Component {
     }));
 
     if (query !== "") {
-      BooksAPI.search(query.toLowerCase()).then(matchingBooks => {
-        if (matchingBooks.error) {
+      BooksAPI.search(query.toLowerCase()).then(requestedBooks => {
+        if (requestedBooks.error) {
           this.setState({
             searchBooks: [],
             error: true,
           });
         } else {
-          /* WIP */
-          /* for all matching books, check if book in myReads */
-          /* If in my reads - remove current, add the one in my reads */
+          const books = this.props.books;
+          const searchBooks = requestedBooks.map(b => {
+            for (let book of books) {
+              if (b.id === book.id) {
+                return book;
+              }
+            }
+            b.shelf = "none";
+            return b;
+          });
+
           this.setState({
-            searchBooks: matchingBooks,
+            searchBooks: searchBooks,
             error: false,
           });
         }
@@ -62,10 +69,10 @@ class SearchBooks extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          {this.state.query && !this.state.error && (
+          {!this.state.error && this.state.query && (
             <Booklist
               books={this.state.searchBooks}
-              onChangeBookshelf={this.props.onChangeBookshelf}
+              onChangeBookshelf={this.props.handleChangeBookshelf}
             />
           )}
           {this.state.error && <p>No books matching search criteria</p>}
