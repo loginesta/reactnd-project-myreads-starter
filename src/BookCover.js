@@ -24,7 +24,7 @@ const BookCover = props => {
 };
 
 BookCover.propTypes = {
-  imageLinks: PropTypes.object.isRequired,
+  imageLinks: PropTypes.object,
 };
 
 export default BookCover;
