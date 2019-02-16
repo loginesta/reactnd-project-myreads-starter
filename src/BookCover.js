@@ -2,8 +2,7 @@ import React from "react";
 import defaultImage from "./img/default-book-cover.png";
 import PropTypes from "prop-types";
 
-const BookCover = props => {
-  const { imageLinks } = props;
+const BookCover = ({ imageLinks }) => {
   let image = defaultImage;
   if (imageLinks && imageLinks.thumbnail) {
     image = imageLinks.thumbnail;
