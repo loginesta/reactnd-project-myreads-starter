@@ -4,14 +4,14 @@ MyReads is a web application that allows users to select and categorize books in
 
 In this application, the main page displays a list of "shelves" (i.e. categories), each of which contains a number of books. The three shelves are: _Currently Reading_, _Want to Read_ and _Read_.
 
-![Screenshot](https://loginesta.github.io/portfolio/projects/myreads-react-app/images/main-page.png)
+![Screenshot](https://loginesta.github.io/myreads-react-app/images/main-page.png)
 
 Each book has a control that lets the user select the shelf for that book. When the user selects a different shelf, the book moves there.
 
 From the main page the user can navigate to a _Search_ page that allows the user to find books.
 The search page will display the books that match the entered search criteria, along with a control that lets the user add books to the library.
 
-![Screenshot](https://loginesta.github.io/portfolio/projects/myreads-react-app/images/search-page.png)
+![Screenshot](https://loginesta.github.io/myreads-react-app/images/search-page.png)
 
 ## Installation
 
